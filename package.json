@@ -1,0 +1,23 @@
+{
+  "name": "c3",
+  "version": "1.0.0",
+  "description": "a node.js middleware example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vulcan-Logic/FS_node.js.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "Vineet W. Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vulcan-Logic/FS_node.js/issues"
+  },
+  "homepage": "https://github.com/Vulcan-Logic/FS_node.js#readme"
+}
