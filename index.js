@@ -1,9 +1,24 @@
+const express = require('express');
 const http =  require('http');
 const hostname = 'localhost';
 const port = 3000;
 const fs = require('fs');
 const path = require('path');
 
+/* use express */
+const app=express();
+
+app.use((req,res,next)=>{
+    console.log(req.headers);
+    res.statusCode = 404;
+                    res.setHeader('Content-Type','text-html');
+                    res.end('<html> <body> <h1> This is an express server</h1> </body> </html>');
+    
+});
+
+
+/* 
+//use plain http server builtin to node 
 const server = http.createServer((req,res)=>{
     console.log("Request for " + req.url + " by method " + req.method);
     console.log(req.headers);
@@ -33,10 +48,14 @@ const server = http.createServer((req,res)=>{
             res.end('<html> <body> <h1> File not an HTML file - Error 404 </h1> </body> </html>');
         }
     }
-    res.statusCode = 404;
+    res.statusCode = 400;
     res.setHeader('Content-Type','text-html');
-    res.end('<html> <body> <h1> Request method not supported - Error 404 </h1> </body> </html>');
+    res.end('<html> <body> <h1> BAD Request - method not supported - Error 40 </h1> </body> </html>');
 });
+*/
+
+// use express js 
+const server = http.createServer(app);
 
 server.listen(port, hostname, ()=> {
     console.log(`server is running at http://${hostname}:${port}`);

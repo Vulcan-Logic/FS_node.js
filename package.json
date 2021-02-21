@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Vulcan-Logic/FS_node.js/issues"
   },
-  "homepage": "https://github.com/Vulcan-Logic/FS_node.js#readme"
+  "homepage": "https://github.com/Vulcan-Logic/FS_node.js#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
