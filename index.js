@@ -1,28 +1,31 @@
+//imports
 const express = require('express');
-const http =  require('http');
+const http = require('http');
 const morgan = require('morgan');
-const bodyParser=require('body-parser');
-
+//const bodyParser = require('body-parser');
+//import route modules
 const dishRouter = require('./routes/dishRouter');
 const promoRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
-
+//set hostname and port for use with createServer
 const hostname = 'localhost';
 const port = 3000;
-const fs = require('fs');
-const path = require('path');
+//const fs = require('fs');
+//const path = require('path');
 
 /* use express */
 const app=express();
+//console request logger 
 app.use(morgan('dev'));
-app.use(bodyParser.json());
+//parse body of request if in json format
+app.use(express.json());
+//route request based on the URI
 app.use('/dishes',dishRouter);
 app.use('/promotions', promoRouter);
 app.use('/leaders', leaderRouter);
-
+//serve static files
 app.use(express.static(__dirname+ '/public'));
-
-
+//serve this when requested route is not matched with routes outlined above
 app.use((req,res,next)=>{
     console.log(req.headers);
     res.statusCode = 200;
@@ -30,9 +33,8 @@ app.use((req,res,next)=>{
                     res.end('<html> <body> <h1> This is an express server</h1> </body> </html>');
 });
 
-
 /* 
-//use plain http server builtin to node 
+//use vanilla http server built in node 
 const server = http.createServer((req,res)=>{
     console.log("Request for " + req.url + " by method " + req.method);
     console.log(req.headers);
@@ -68,7 +70,7 @@ const server = http.createServer((req,res)=>{
 });
 */
 
-// use express js 
+// use express js - juse createServer with app from express 
 const server = http.createServer(app);
 
 server.listen(port, hostname, ()=> {
